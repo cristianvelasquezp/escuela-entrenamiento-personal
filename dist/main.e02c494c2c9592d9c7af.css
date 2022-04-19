@@ -40,6 +40,11 @@ body {
   max-width: 120rem;
   margin: 0 auto;
 }
+@media only screen and (max-width: 75em) {
+  .container {
+    padding: 0 1.6rem;
+  }
+}
 
 body {
   font-family: "Inter", sans-serif;
