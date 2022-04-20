@@ -13,11 +13,15 @@ class ViewHome extends View {
     _generateMarkup(){
         console.log(this._data);
         return `
-            <h2 class="heading-secondary mb-medium">ENTRENAMIENTOS DEL DÍA</h2>
-            ${this._generateDayWorkout()}
-            
-            <h2 class="heading-secondary mb-medium">TIPOS DE ENTRENAMIENTO</h2>
-            ${this._generateCategories()}
+            <section class="workout-sections">
+                <div class="container">
+                    <h2 class="heading-secondary mb-medium">ENTRENAMIENTOS DEL DÍA</h2>
+                    ${this._generateDayWorkout()}
+                    
+                    <h2 class="heading-secondary mb-medium">TIPOS DE ENTRENAMIENTO</h2>
+                    ${this._generateCategories()}
+                </div>
+            </section>
         `
     }
 
