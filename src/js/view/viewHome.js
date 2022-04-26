@@ -11,7 +11,6 @@ class ViewHome extends View {
     }
 
     _generateMarkup(){
-        console.log(this._data);
         return `
             <section class="workout-sections">
                 <div class="container">
@@ -27,7 +26,8 @@ class ViewHome extends View {
 
     _generateCategories() {
 
-        let html;
+        let html = "";
+
         this._data.video.categories.forEach( (category, index, categories) => {
 
             if ( index === 0 ) {

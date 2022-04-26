@@ -18,10 +18,8 @@ body {
 }
 
 .container {
-  max-width: 120rem;
+  max-width: 123rem;
   margin: 0 auto;
+  padding: 0 var(--padding-container);
 
-  @include respond(tab-land) {
-    padding: 0 1.6rem;
-  }
 }
