@@ -17,3 +17,16 @@ export const state = {
         ]
     },
 }
+
+export const getWorkouts = async function () {
+    try{
+        const res = await fetch('http://127.0.0.1:3000/api/v1/workout/');
+        //console.log(res);
+        const data = await res.json();
+        console.log(data);
+    }catch (err) {
+        console.log(err)
+        throw err;
+    }
+
+}

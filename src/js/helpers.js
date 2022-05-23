@@ -4,4 +4,9 @@ function importAll(r) {
     return images;
 }
 
+export function getPath( $hash) {
+    const separatorPosition = $hash.search('/');
+    return $hash.slice(1,separatorPosition);
+}
+
 export const images = importAll(require.context('../img', false, /\.(png|jpe?g|svg)$/));
