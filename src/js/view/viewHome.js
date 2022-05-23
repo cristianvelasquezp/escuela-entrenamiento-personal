@@ -28,7 +28,7 @@ class ViewHome extends View {
 
         let html = "";
 
-        this._data.video.categories.forEach( (category, index, categories) => {
+        this._data.workout.categories.forEach( (category, index, categories) => {
 
             if ( index === 0 ) {
                 html += `<div class="card-group">`;
@@ -54,7 +54,7 @@ class ViewHome extends View {
     _generateDayWorkout() {
         return `
             <div class="card-group mb-big">
-                ${this._data.video.lastVideos.map(category => ViewCard.render(category, false)).join('')}
+                ${this._data.workout.videos.map(category => ViewCard.render(category, false)).join('')}
             </div>
         `
     }

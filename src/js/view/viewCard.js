@@ -8,7 +8,7 @@ class ViewCard extends View {
         return `
             <div class="card">
                 <a href="#" class="card__link">
-                    <img class="card__img" src="${this._data.image}">
+                    <img class="card__img" src="${this._data.thumbnail}">
                     <div class="card__content">
                         ${this._data.hardness ? '<span class="card__hardness">' + this._data.hardness + '</span>' : '' }
                         <h3 class="card__title">${this._data.name}</h3>
