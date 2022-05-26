@@ -9,7 +9,7 @@ export default class View {
         if( render === false) return markup;
 
         this.clear();
-        this._parentElement.insertAdjacentHTML('beforebegin', markup)
+        this._parentElement.insertAdjacentHTML('afterbegin', markup)
     }
 
     clear() {
