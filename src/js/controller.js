@@ -6,11 +6,12 @@ import * as helper from "./helpers"
 const controlHome = async function() {
     await model.loadWorkoutsVideo();
     await model.loadWorkoutCategories();
-    ViewHeader.render({page: "home"} );
+    ViewHeader.render(model.state );
     ViewHome.render( model.state );
 }
 
-const controlCategory = function() {
+const controlCategory = async function() {
+    await model.loadWorkoutCategories();
 
 }
 

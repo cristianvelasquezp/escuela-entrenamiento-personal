@@ -25,10 +25,10 @@ class ViewHome extends View {
     }
 
     _generateCategories() {
-
+        const categories = this._data.workout.categories.filter(category => { if (category.inHome === true) return category })
         let html = "";
 
-        this._data.workout.categories.forEach( (category, index, categories) => {
+        categories.forEach( (category, index, categories) => {
 
             if ( index === 0 ) {
                 html += `<div class="card-group">`;

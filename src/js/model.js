@@ -3,6 +3,7 @@ import { images, getJSON, getDate } from "./helpers.js";
 
 export const state = {
     workout : {
+        page:'category',
         videos:[],
         categories : []
     },
@@ -35,11 +36,19 @@ export const loadWorkoutCategories = async function () {
                 id: category._id,
                 name: category.name,
                 thumbnail: category.thumbnail,
-                thumbnail2x: category.thumbnail2x
+                thumbnail2x: category.thumbnail2x,
+                slug: category.slug,
+                position: category.Position,
+                icon: category.icon,
+                inHome: category.inHome
             }
         })
     } catch (err) {
         console.log(err);
         throw err;
     }
+}
+
+export const setPage = function (page) {
+    state.workout.page = page;
 }

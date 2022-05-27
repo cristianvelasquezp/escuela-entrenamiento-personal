@@ -8,7 +8,7 @@ class ViewHeader extends View {
 
     _generateMarkup(){
         let viewHeader = ViewHeaderCategories;
-        if(this._data.page === "home") {
+        if(this._data.workout.page === "home") {
             this.homeHeroBg();
             viewHeader = ViewHeaderText;
         }
@@ -23,7 +23,7 @@ class ViewHeader extends View {
                         <a href="#" class="btn btn--green">Iniciar sesión</a>
                     </div>
                 </div>
-                ${viewHeader.render('',false)}
+                ${viewHeader.render(this._data.workout,false)}
             </div>
         `
     }
