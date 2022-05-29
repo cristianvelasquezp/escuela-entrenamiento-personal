@@ -20,11 +20,9 @@ export default class View {
 
     renderSpinner() {
         const markup = `
-      <div class="spinner">
-        <svg>
-          <use href="${svg}#image0_604_2316"></use>
-        </svg>
-      </div>
+              <div class="wrapper">
+                <div class="spinner spinner3"></div>
+              </div>
     `;
         this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
