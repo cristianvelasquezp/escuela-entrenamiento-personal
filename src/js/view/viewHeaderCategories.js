@@ -6,24 +6,38 @@ class ViewHeaderCategories extends View {
     _parentElement = document.querySelector('.header');
 
     _generateMarkup() {
-        console.log(this._data.categories)
+        const categories = this._orderCategories(this._data.categories)
+        console.log(categories);
         return `
             <div class="header__categories">
+                
                 <div class="icon-box">
-                    <svg class="icon-box__svg"><use href="${svg}#icon-todos"></use></svg>
-                    <div class="icon-box__title">All</div>
+                    <a href="#" class="icon-box__link">    
+                        <svg class="icon-box__svg"><use href="${svg}#icon-todos"></use></svg>
+                        <div class="icon-box__title">All</div>
+                    </a>
                 </div>
-                ${this._data.categories.map(category => this._categoryMarkup(category)).join(' ')}
+                
+                ${categories.map(category => this._categoryMarkup(category)).join(' ')}
         `
     }
 
     _categoryMarkup(category){
         return`
             <div class="icon-box">
-                <svg class="icon-box__svg"><use href="${svg}#${category.icon}"></use></svg>
-                <div class="icon-box__title">${category.name}</div>
+                <a href="#" class="icon-box__link" data-id="${category.id}">
+                    <svg class="icon-box__svg"><use href="${svg}#${category.icon}"></use></svg>
+                    <div class="icon-box__title">${category.name}</div>
+                </a>
             </div>
         `
+    }
+
+    _orderCategories(categories) {
+        categories.sort( (a, b) => {
+            return a.position - b.position;
+        })
+        return categories;
     }
 
 }

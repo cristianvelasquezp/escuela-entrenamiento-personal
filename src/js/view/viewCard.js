@@ -7,7 +7,7 @@ class ViewCard extends View {
     _generateMarkup() {
         return `
             <div class="card">
-                <a href="#" class="card__link">
+                <a href="#" class="card__link" data-id="${this._data.id}" data-type="${this._data.type || 'video'}" data-categoty="${this._data.category}">
                     <img class="card__img" src="${this._data.thumbnail}">
                     <div class="card__content">
                         ${this._data.hardness ? '<span class="card__hardness">' + this._data.hardness + '</span>' : '' }

@@ -5,13 +5,14 @@ export const state = {
     workout : {
         page:'category',
         videos:[],
-        categories : []
+        categories:[],
+        currentCategory: ''
     },
 }
 
 export const loadWorkoutsVideo = async function() {
     try {
-        const data = await getJSON(`${API_URL}workout/`);
+        const data = await getJSON(`${API_URL}workout/?limit=3`);
         state.workout.videos = data.data.workouts.map( workout => {
             return {
                 id: workout._id,
@@ -19,7 +20,8 @@ export const loadWorkoutsVideo = async function() {
                 hardness: workout.hardness,
                 date: getDate(workout.date),
                 thumbnail: workout.thumbnail,
-                thumbnail2x: workout.thumbnail2x
+                thumbnail2x: workout.thumbnail2x,
+                category: workout.category
             }
         })
     } catch (err) {
@@ -41,6 +43,32 @@ export const loadWorkoutCategories = async function () {
                 position: category.Position,
                 icon: category.icon,
                 inHome: category.inHome
+            }
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+export const loadVideosByCategory = async function(categoryId, currentCategory) {
+    try {
+        state.workout.currentCategory = currentCategory;
+        let data;
+        if (categoryId === undefined) {
+            data = await getJSON(`${API_URL}workout/`);
+        }else {
+            data = await getJSON(`${API_URL}workout/?categoryId=${categoryId}`);
+        }
+        state.workout.videos = data.data.workouts.map( workout => {
+            return {
+                id: workout._id,
+                name: workout.name,
+                hardness: workout.hardness,
+                date: getDate(workout.date),
+                thumbnail: workout.thumbnail,
+                thumbnail2x: workout.thumbnail2x,
+                category: workout.category
             }
         })
     } catch (err) {

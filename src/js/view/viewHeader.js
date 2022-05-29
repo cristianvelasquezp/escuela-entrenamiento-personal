@@ -6,6 +6,17 @@ class ViewHeader extends View {
 
     _parentElement = document.querySelector('.header');
 
+    addHandlerClick(handler) {
+        this._parentElement.addEventListener('click', function (e) {
+            e.preventDefault();
+            const clicked = e.target.closest('.icon-box__link');
+
+            if(!clicked) return
+
+            handler(clicked.dataset.id);
+        })
+    }
+
     _generateMarkup(){
         let viewHeader = ViewHeaderCategories;
         if(this._data.workout.page === "home") {

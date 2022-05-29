@@ -10,6 +10,17 @@ class ViewHome extends View {
         ['hashchange', 'load'].forEach( ev => window.addEventListener(ev, handler));
     }
 
+    addHandlerClick(handler) {
+        this._parentElement.addEventListener('click', function (e) {
+            e.preventDefault();
+            const clicked = e.target.closest('.card__link');
+
+            if(!clicked) return
+
+            handler(clicked.dataset.id, clicked.dataset.type);
+        })
+    }
+
     _generateMarkup(){
         return `
             <section class="workout-sections">
@@ -29,6 +40,8 @@ class ViewHome extends View {
         let html = "";
 
         categories.forEach( (category, index, categories) => {
+
+            category.type = "category";
 
             if ( index === 0 ) {
                 html += `<div class="card-group">`;

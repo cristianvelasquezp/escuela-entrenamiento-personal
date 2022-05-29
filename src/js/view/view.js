@@ -1,3 +1,5 @@
+import svg from '../../img/sprite.svg'
+
 export default class View {
 
     _data;
@@ -8,12 +10,24 @@ export default class View {
 
         if( render === false) return markup;
 
-        this.clear();
+        this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup)
     }
 
-    clear() {
+    _clear() {
         this._parentElement.innerHTML = "";
+    }
+
+    renderSpinner() {
+        const markup = `
+      <div class="spinner">
+        <svg>
+          <use href="${svg}#image0_604_2316"></use>
+        </svg>
+      </div>
+    `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
     }
 
 }
