@@ -13,15 +13,17 @@ class ViewHeader extends View {
 
             if(!clicked) return
 
-            handler(clicked.dataset.id);
+            handler(clicked.dataset.id, clicked.dataset.category);
         })
     }
 
     _generateMarkup(){
         let viewHeader = ViewHeaderCategories;
         if(this._data.workout.page === "home") {
-            this.homeHeroBg();
+            this._parentElement.classList.add('header__home');
             viewHeader = ViewHeaderText;
+        }else {
+            this._parentElement.classList.remove('header__home');
         }
         return `
             <div class="container header__container">
@@ -37,10 +39,6 @@ class ViewHeader extends View {
                 ${viewHeader.render(this._data.workout,false)}
             </div>
         `
-    }
-
-    homeHeroBg() {
-        this._parentElement.classList.add('header__home');
     }
 
 }

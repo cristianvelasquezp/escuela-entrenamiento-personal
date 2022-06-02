@@ -3,7 +3,7 @@ import { images, getJSON, getDate } from "./helpers.js";
 
 export const state = {
     workout : {
-        page:'category',
+        page:'home',
         videos:[],
         categories:[],
         currentCategory: ''
@@ -51,9 +51,8 @@ export const loadWorkoutCategories = async function () {
     }
 }
 
-export const loadVideosByCategory = async function(categoryId, currentCategory) {
+export const loadVideosByCategory = async function(categoryId) {
     try {
-        state.workout.currentCategory = currentCategory;
         let data;
         if (categoryId === undefined) {
             data = await getJSON(`${API_URL}workout/`);
@@ -79,4 +78,8 @@ export const loadVideosByCategory = async function(categoryId, currentCategory) 
 
 export const setPage = function (page) {
     state.workout.page = page;
+}
+
+export const setCurrentCategory = function (category) {
+    state.workout.currentCategory = category;
 }

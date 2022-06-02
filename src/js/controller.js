@@ -2,9 +2,7 @@ import ViewHome from './view/viewHome'
 import ViewHeader from './view/viewHeader'
 import ViewVideos from './view/viewVideos'
 import * as model  from "./model"
-import * as helper from "./helpers"
 import viewVideos from "./view/viewVideos";
-import viewHeader from "./view/viewHeader";
 
 const controlHome = async function() {
     await model.loadWorkoutsVideo();
@@ -23,9 +21,11 @@ const controlClickCard = function (id, type, currentCategory = 'all'){
 }
 
 const controlVideosByCategory = async function (categoryId, currentCategory = 'all') {
-    model.setPage('category');
     viewVideos.renderSpinner();
-    await model.loadVideosByCategory(categoryId, currentCategory);
+    model.setPage('category');
+    model.setCurrentCategory(currentCategory);
+    ViewHeader.render(model.state );
+    await model.loadVideosByCategory(categoryId);
     ViewVideos.render(model.state.workout)
 
 }

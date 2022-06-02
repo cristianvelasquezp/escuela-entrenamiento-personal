@@ -17,7 +17,7 @@ class ViewHome extends View {
 
             if(!clicked) return
 
-            handler(clicked.dataset.id, clicked.dataset.type);
+            handler(clicked.dataset.id, clicked.dataset.type, clicked.dataset.category);
         })
     }
 

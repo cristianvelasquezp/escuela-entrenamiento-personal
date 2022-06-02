@@ -148,7 +148,7 @@ body {
     width: calc(100% + var(--padding-container) * 2);
     margin-left: calc(var(--padding-container) * -1);
     padding: 0 var(--padding-container);
-    overflow: scroll;
+    overflow-x: auto;
   }
 }
 .card-group::-webkit-scrollbar {
@@ -245,7 +245,7 @@ body {
           justify-content: center;
   border-radius: 0.8rem;
 }
-.icon-box:hover {
+.icon-box:hover, .icon-box__active {
   background-color: var(--color-primary);
   cursor: pointer;
   color: #000;
