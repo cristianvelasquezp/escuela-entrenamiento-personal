@@ -59,7 +59,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpe?g|png|gif|svg|webp)$/i,
+                test: /\.(jpe?g|png|gif|svg|webp|mp4)$/i,
                 type: 'asset/resource'
             },
             {

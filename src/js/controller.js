@@ -1,8 +1,10 @@
 import ViewHome from './view/viewHome'
 import ViewHeader from './view/viewHeader'
 import ViewVideos from './view/viewVideos'
-import * as model  from "./model"
 import viewVideos from "./view/viewVideos";
+import viewVideoMedia from "./view/viewVideoMedia";
+import * as model  from "./model"
+import * as modelVideoMedia from "./modelVideoMedia"
 
 const controlHome = async function() {
     await model.loadWorkoutsVideo();
@@ -18,6 +20,7 @@ const controlCategory = async function() {
 
 const controlClickCard = function (id, type, currentCategory = 'all'){
     if(type==='category') controlVideosByCategory(id, currentCategory);
+    if(type==='video') controlShowVideo(id);
 }
 
 const controlVideosByCategory = async function (categoryId, currentCategory = 'all') {
@@ -27,11 +30,30 @@ const controlVideosByCategory = async function (categoryId, currentCategory = 'a
     ViewHeader.render(model.state );
     await model.loadVideosByCategory(categoryId);
     ViewVideos.render(model.state.workout)
+}
 
+const controlShowVideo = function(id) {
+    modelVideoMedia.getVideo(id);
+}
+
+const controlLoadVideo = function (video) {
+    modelVideoMedia.loadVideoState(video);
+}
+
+const controlClickVideo = function (btn) {
+    modelVideoMedia.HandlerClick(btn)
+}
+
+const controlProgressBar = function(progressBar) {
+    modelVideoMedia.setProgressBar(progressBar);
 }
 
 export default function init () {
     ViewHome.addHandlerRender(controlHome);
     ViewHome.addHandlerClick(controlClickCard);
     ViewHeader.addHandlerClick(controlVideosByCategory);
+    viewVideoMedia.render();
+    viewVideoMedia.addHandlerLoadVideo(controlLoadVideo);
+    viewVideoMedia.addHandlerClick(controlClickVideo);
+    viewVideoMedia.addHandlerDurationPlayer(controlProgressBar);
 }

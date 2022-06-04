@@ -1,0 +1,54 @@
+.video {
+  width: 100%;
+  position: relative;
+
+  &__tag {
+   width: 100%;
+  }
+
+  &__controls{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    display: flex;
+
+    btn {
+      fill: #fff;
+      cursor: pointer;
+    }
+
+    btn:hover {
+      fill: var(--color-primary);
+    }
+
+    btn:not(:last-child){
+      margin-right: 2rem;
+    }
+
+  }
+
+  &__svg{
+    width: 5.8rem;
+    height: 5.8rem;
+  }
+
+  &__progress-bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 4rem;
+    background-color: #fff;
+    z-index: 10;
+    max-width: 97%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &--play {
+      background-color: var(--color-primary);
+      width: 0%;
+      height: 100%;
+    }
+  }
+}

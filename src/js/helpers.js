@@ -36,7 +36,7 @@ function getMonthStr(month) {
 }
 
 export const images = importAll(
-    require.context('../img', false, /\.(png|jpe?g|svg)$/)
+    require.context('../img', false, /\.(png|jpe?g|svg|mp4)$/)
 );
 
 const timeout = function(s) {
