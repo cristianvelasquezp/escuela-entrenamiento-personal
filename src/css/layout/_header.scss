@@ -44,5 +44,10 @@
   &__categories {
     display: flex;
     margin-top: 4rem;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
