@@ -33,7 +33,7 @@ const controlVideosByCategory = async function (categoryId, currentCategory = 'a
 }
 
 const controlShowVideo = function(id) {
-    modelVideoMedia.getVideo(id);
+    modelVideoMedia.toggleVideo(id);
 }
 
 const controlLoadVideo = function (video) {

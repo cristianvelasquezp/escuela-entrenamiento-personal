@@ -35,23 +35,27 @@ class ViewVideoMedia extends View {
     _generateMarkup(){
         return `
             <div class="video">
+                <div class="video__title"><p class="paragraph">Full Body Cardio Fight</p></div>
+                <button id="exit" class="video__exit video__btn">
+                    <div class="video__icon-exit"></div>
+                </button>
                 <video class="video__tag" src="${images['Punching-the-punching-bag.mp4']}"></video>
                 <div class="video__controls">
-                    <btn id="reload" class="video__btn video__reload">
+                    <button id="reload" class="video__btn video__reload">
                         <svg class="video__svg">
                             <use href="${svg}#icon-reset2"></use>
                         </svg>
-                    </btn>
-                    <btn id="play" class="video__btn video__rewind">
+                    </button>
+                    <button id="play" class="video__btn video__rewind">
                         <svg class="video__svg">
                             <use href="${svg}#icon-play"></use>
                         </svg>
-                    </btn>
-                    <btn id="rewind" class="video__btn video__rewind">
+                    </button>
+                    <button id="rewind" class="video__btn video__rewind">
                         <svg class="video__svg">
                             <use href="${svg}#icon-reset"></use>
                         </svg>
-                    </btn>
+                    </button>
                 </div>
                 <div class="video__progress-bar">
                     <div class="video__progress-bar--play"></div>

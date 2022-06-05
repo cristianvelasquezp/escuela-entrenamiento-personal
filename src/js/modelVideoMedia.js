@@ -19,6 +19,8 @@ export const HandlerClick = function (btn) {
 
     if (btn === 'play'){
         play();
+    } else if (btn === 'exit') {
+        toggleVideo();
     }
 
 }
@@ -37,7 +39,7 @@ export const setProgressBar = function (progressBar) {
     console.log(state.data.currentTime);
 }
 
-export const getVideo = function (id) {
+export const toggleVideo = function (id) {
     const popup = document.querySelector('.popup');
     popup.classList.toggle('popup--active');
 }
