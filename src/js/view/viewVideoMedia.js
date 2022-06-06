@@ -33,6 +33,7 @@ class ViewVideoMedia extends View {
     }
 
     _generateMarkup(){
+        console.log(this._data);
         return `
             <div class="video">
                 <div class="video__title"><p class="paragraph">Full Body Cardio Fight</p></div>
@@ -46,9 +47,9 @@ class ViewVideoMedia extends View {
                             <use href="${svg}#icon-reset2"></use>
                         </svg>
                     </button>
-                    <button id="play" class="video__btn video__rewind">
+                    <button id="play" class="video__btn video__play">
                         <svg class="video__svg">
-                            <use href="${svg}#icon-play"></use>
+                            <use href="${svg}#icon-${this._data.paused === true ? 'play' : 'pause'}"></use>
                         </svg>
                     </button>
                     <button id="rewind" class="video__btn video__rewind">
@@ -56,9 +57,9 @@ class ViewVideoMedia extends View {
                             <use href="${svg}#icon-reset"></use>
                         </svg>
                     </button>
-                </div>
+                </div>              
                 <div class="video__progress-bar">
-                    <div class="video__progress-bar--play"></div>
+                    <div class="video__progress-bar--play" style="width: ${this._data.currentTime}%"></div>
                 </div>
             </div>
         `

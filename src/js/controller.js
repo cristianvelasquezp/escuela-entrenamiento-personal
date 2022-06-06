@@ -11,6 +11,9 @@ const controlHome = async function() {
     await model.loadWorkoutCategories();
     ViewHeader.render(model.state );
     ViewHome.render( model.state );
+    viewVideoMedia.render( modelVideoMedia.state.data);
+    viewVideoMedia.addHandlerLoadVideo(controlLoadVideo);
+    viewVideoMedia.addHandlerDurationPlayer(controlProgressBar);
 }
 
 const controlCategory = async function() {
@@ -29,7 +32,7 @@ const controlVideosByCategory = async function (categoryId, currentCategory = 'a
     model.setCurrentCategory(currentCategory);
     ViewHeader.render(model.state );
     await model.loadVideosByCategory(categoryId);
-    ViewVideos.render(model.state.workout)
+    ViewVideos.render(model.state.workout);
 }
 
 const controlShowVideo = function(id) {
@@ -41,19 +44,18 @@ const controlLoadVideo = function (video) {
 }
 
 const controlClickVideo = function (btn) {
-    modelVideoMedia.HandlerClick(btn)
+    modelVideoMedia.HandlerClick(btn);
+    viewVideoMedia.update(modelVideoMedia.state.data);
 }
 
 const controlProgressBar = function(progressBar) {
     modelVideoMedia.setProgressBar(progressBar);
+    viewVideoMedia.update(modelVideoMedia.state.data)
 }
 
 export default function init () {
     ViewHome.addHandlerRender(controlHome);
     ViewHome.addHandlerClick(controlClickCard);
     ViewHeader.addHandlerClick(controlVideosByCategory);
-    viewVideoMedia.render();
-    viewVideoMedia.addHandlerLoadVideo(controlLoadVideo);
     viewVideoMedia.addHandlerClick(controlClickVideo);
-    viewVideoMedia.addHandlerDurationPlayer(controlProgressBar);
 }

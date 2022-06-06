@@ -9,10 +9,6 @@ export const state = {
 
 export const loadVideoState = function (video) {
     state.video = video;
-    console.log(video.duration);
-    state.data.duration = video.duration * 1;
-    state.data.currentTime = video.currentTime;
-    console.log(state.data.duration);
 }
 
 export const HandlerClick = function (btn) {
@@ -26,17 +22,18 @@ export const HandlerClick = function (btn) {
 }
 
 const play = function () {
+    console.log(state.video)
     if (state.video.paused) {
+        state.data.paused = false;
         state.video.play();
     }else {
+        state.data.paused = true;
         state.video.pause();
     }
 }
 
 export const setProgressBar = function (progressBar) {
     state.data.currentTime = ( state.video.currentTime/state.video.duration ) * 100;
-    progressBar.style.width = `${state.data.currentTime}%`;
-    console.log(state.data.currentTime);
 }
 
 export const toggleVideo = function (id) {
