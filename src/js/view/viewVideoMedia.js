@@ -36,11 +36,11 @@ class ViewVideoMedia extends View {
         console.log(this._data);
         return `
             <div class="video">
-                <div class="video__title"><p class="paragraph">Full Body Cardio Fight</p></div>
+                <div class="video__title"><p class="paragraph">${this._data.name}</p></div>
                 <button id="exit" class="video__exit video__btn">
                     <div class="video__icon-exit"></div>
                 </button>
-                <video class="video__tag" src="${images['Punching-the-punching-bag.mp4']}"></video>
+                <video class="video__tag" src="${this._data.videoUrl}"></video>
                 <div class="video__controls">
                     <button id="reload" class="video__btn video__reload">
                         <svg class="video__svg">
@@ -65,7 +65,9 @@ class ViewVideoMedia extends View {
         `
     }
 
-
+    getVideo() {
+        return this._parentElement.querySelector('.video__tag');
+    }
 }
 
 export default new ViewVideoMedia();

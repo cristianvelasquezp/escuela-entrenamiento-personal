@@ -12,8 +12,6 @@ const controlHome = async function() {
     ViewHeader.render(model.state );
     ViewHome.render( model.state );
     viewVideoMedia.render( modelVideoMedia.state.data);
-    viewVideoMedia.addHandlerLoadVideo(controlLoadVideo);
-    viewVideoMedia.addHandlerDurationPlayer(controlProgressBar);
 }
 
 const controlCategory = async function() {
@@ -35,12 +33,12 @@ const controlVideosByCategory = async function (categoryId, currentCategory = 'a
     ViewVideos.render(model.state.workout);
 }
 
-const controlShowVideo = function(id) {
-    modelVideoMedia.toggleVideo(id);
-}
-
-const controlLoadVideo = function (video) {
-    modelVideoMedia.loadVideoState(video);
+const controlShowVideo = async function(id) {
+    await modelVideoMedia.loadVideoState(id);
+    viewVideoMedia.render( modelVideoMedia.state.data);
+    modelVideoMedia.setVideoState(viewVideoMedia.getVideo());
+    viewVideoMedia.addHandlerDurationPlayer(controlProgressBar);
+    modelVideoMedia.toggleVideo();
 }
 
 const controlClickVideo = function (btn) {
