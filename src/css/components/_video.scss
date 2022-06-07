@@ -21,6 +21,11 @@
     cursor: pointer;
   }
 
+  &__exit:hover .video__icon-exit::after,
+  &__exit:hover .video__icon-exit::before{
+    background-color: var(--color-primary);
+  }
+
   &__icon-exit {
     position: relative;
     width: 3rem;

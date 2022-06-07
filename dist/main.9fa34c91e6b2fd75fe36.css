@@ -333,6 +333,9 @@ body {
   height: 3rem;
   cursor: pointer;
 }
+.video__exit:hover .video__icon-exit::after, .video__exit:hover .video__icon-exit::before {
+  background-color: var(--color-primary);
+}
 .video__icon-exit {
   position: relative;
   width: 3rem;

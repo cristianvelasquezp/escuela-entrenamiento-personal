@@ -33,7 +33,6 @@ class ViewVideoMedia extends View {
     }
 
     _generateMarkup(){
-        console.log(this._data);
         return `
             <div class="video">
                 <div class="video__title"><p class="paragraph">${this._data.name}</p></div>

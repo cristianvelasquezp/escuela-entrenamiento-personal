@@ -9,6 +9,7 @@ export const state = {
         duration: 0,
         currentTime: 0,
         videoUrl: 'http://127.0.0.1:3000/img/Punching-the-punching-bag.mp4',
+        reload: 5,
     }
 }
 
@@ -29,6 +30,10 @@ export const HandlerClick = function (btn) {
 
     if (btn === 'play'){
         play();
+    } else if (btn === 'reload') {
+        reload();
+    } else if (btn === 'rewind') {
+        rewind();
     } else if (btn === 'exit') {
         toggleVideo();
     }
@@ -36,7 +41,6 @@ export const HandlerClick = function (btn) {
 }
 
 const play = function () {
-    console.log(state.video)
     if (state.video.paused) {
         state.data.paused = false;
         state.video.play();
@@ -44,6 +48,18 @@ const play = function () {
         state.data.paused = true;
         state.video.pause();
     }
+}
+
+const reload = function () {
+    if ((state.data.currentTime - state.data.reload) < 0){
+        state.video.currentTime = 0;
+    } else {
+        state.video.currentTime = state.video.currentTime - state.data.reload;
+    }
+}
+
+const rewind = function () {
+    state.video.currentTime = state.video.currentTime + state.data.reload;
 }
 
 export const setProgressBar = function (progressBar) {
